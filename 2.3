@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Sample DataFrame (replace with your actual data)
+data = {
+    'Customer_ID': [1, 2, 3, 4, 5],
+    'Age': [25, 30, 35, 40, 45],
+    'Purchase': [True, False, True, True, True]
+}
+
+sales_data = pd.DataFrame(data)
+
+# Filter customers who have made a purchase
+purchased_customers = sales_data[sales_data['Purchase']]
+
+# Calculate frequency distribution of ages
+age_distribution = purchased_customers['Age'].value_counts().sort_index()
+
+print("Frequency distribution of ages:")
+print(age_distribution)
