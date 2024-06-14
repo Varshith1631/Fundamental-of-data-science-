@@ -1,0 +1,9 @@
+import pandas as pd
+data = {
+    'purchase_amounts': [23.50, 19.99, 23.50, 50.00, 45.00, 23.50, 19.99, 50.00, 19.99, 100.00]
+}
+df = pd.DataFrame(data)
+mean_purchase_amount = df['purchase_amounts'].mean()
+mode_purchase_amount = df['purchase_amounts'].mode()
+print(f"Mean (Average) Purchase Amount: ${mean_purchase_amount:.2f}")
+print(f"Mode Purchase Amount(s): {mode_purchase_amount.tolist()}")
