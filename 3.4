@@ -1,0 +1,48 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+data = {
+    'age': [45, 35, 52, 42, 30, 25, 38, 40, 50, 48, 55, 33, 20, 28, 18, 22, 19, 29],
+    'body_fat_percent': [25, 20, 30, 22, 18, 15, 28, 26, 32, 31, 35, 21, 12, 16, 10, 14, 13, 17]
+}
+df = pd.DataFrame(data)
+mean_age = df['age'].mean()
+median_age = df['age'].median()
+std_age = df['age'].std()
+mean_fat = df['body_fat_percent'].mean()
+median_fat = df['body_fat_percent'].median()
+std_fat = df['body_fat_percent'].std()
+
+print("Age Statistics:")
+print(f"Mean: {mean_age:.2f}, Median: {median_age}, Standard Deviation: {std_age:.2f}")
+print("Body Fat Percentage Statistics:")
+print(f"Mean: {mean_fat:.2f}, Median: {median_fat}, Standard Deviation: {std_fat:.2f}")
+
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+df['age'].plot(kind='box')
+plt.title('Age Boxplot')
+
+plt.subplot(1, 2, 2)
+df['body_fat_percent'].plot(kind='box')
+plt.title('Body Fat Percentage Boxplot')
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(6, 6))
+plt.scatter(df['age'], df['body_fat_percent'])
+plt.title('Age vs Body Fat Percentage')
+plt.xlabel('Age')
+plt.ylabel('Body Fat Percentage')
+plt.show()
+
+plt.figure(figsize=(6, 6))
+stats.probplot(df['age'], dist="norm", plot=plt)
+plt.title('Q-Q Plot for Age')
+plt.show()
+
+plt.figure(figsize=(6, 6))
+stats.probplot(df['body_fat_percent'], dist="norm", plot=plt)
+plt.title('Q-Q Plot for Body Fat Percentage')
+plt.show()
